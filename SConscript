@@ -10,6 +10,13 @@ if GetDepend('PKG_USING_LIBHYDROGEN'):
     src     = 'hydrogen.c'
     path    = [cwd]
 
+    if GetDepend('LIBHYDROGEN_USING_EXAMPLE_RANDOM'):
+        src    += Glob('examples/hydro_random.c')
+
+    if GetDepend('LIBHYDROGEN_USING_EXAMPLE_GENERIC_HASH'):
+        src    += Glob('examples/hydro_generic_hash.c')
+
+
     group   = DefineGroup('libhydrogen', src, depend = ['PKG_USING_LIBHYDROGEN'], CPPPATH = path)
 
     Return('group')
